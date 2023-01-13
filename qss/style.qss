@@ -1,0 +1,9 @@
+QLabel { 
+    color: red;
+    background: blue
+}
+
+#test { 
+    color: blue;
+    background: blue
+}
