@@ -1,17 +1,10 @@
-from PySide6.QtWidgets import QApplication, QWidget, QMainWindow, QPushButton
 
+from PySide6.QtWidgets import QApplication, QWidget, QMainWindow, QPushButton, QSlider
 import sys
 
-
-class ButtonHolder(QMainWindow):
-    def __init__(self):
-        super().__init__()
-        self.setWindowTitle("test")
-        button = QPushButton("press me")
-        self.setCentralWidget(button)
-
+from mainwindow import MainWindow
 
 app = QApplication(sys.argv)
-window = ButtonHolder()
-window.show()
+widget = MainWindow(app)
+widget.show()
 app.exec()
