@@ -2,9 +2,10 @@
 from PySide6.QtWidgets import QApplication, QWidget, QMainWindow, QPushButton, QSlider
 import sys
 
-from mainwindow import MainWindow
+from widget import Widget
 
 app = QApplication(sys.argv)
-widget = MainWindow(app)
+print(app)
+widget = Widget()
 widget.show()
 app.exec()
