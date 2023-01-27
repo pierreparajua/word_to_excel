@@ -5,7 +5,7 @@ import sys
 from widget import Widget
 
 app = QApplication(sys.argv)
-print(app)
+app.setStyleSheet(open('style.qss').read())
 widget = Widget()
 widget.show()
 app.exec()
