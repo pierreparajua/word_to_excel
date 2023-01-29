@@ -4,7 +4,7 @@ from colorama import Fore, Style
 
 from pathlib import Path
 
-from utils import modified_indentation
+from tuto_youtube.utils import modified_indentation
 
 # Définie les noms des dossiers et des fichiers comme des constantes.
 SOURCE_FOLDER = "document_source"

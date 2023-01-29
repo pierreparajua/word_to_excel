@@ -3,8 +3,9 @@ import pandas as pd
 from colorama import Fore, Style
 
 from pathlib import Path
+from docx2pdf import convert
 
-from utils import modified_indentation
+from utils  import modified_indentation, convert_to_pdf
 
 # Définie les noms des dossiers et des fichiers comme des constantes.
 SOURCE_FOLDER = "document_source"
@@ -48,6 +49,7 @@ def get_files_name(folder_path: Path) -> list:
     files_name = []
     for f in folder_path.glob("*.docx"):
         files_name.append(f.name)
+    print(files_name)
     return files_name
 
 
@@ -96,22 +98,24 @@ def create_modified_template(cells: list, content: dict, level: dict):
             cells[ind].text = "      " + str(level[cell.text])
 
 
+def save_file(words_instances, files, exigence, level):
+    for instance, file_name in zip(words_instances, files):
+            cells = get_all_cells(instance)
+            create_modified_template(cells, exigence, level)
+            instance.save(PATH_RESULT / file_name)
+            convert_to_pdf(PATH_RESULT, file_name)
+            
+
+
 def main(language_choice):
     # Fonction principale du programme.
     # Exécute les fonctions précédentes chronologiquement.
     print("main")
     requirement, exigence, level = get_df_from_excel()
+    files = get_files_name(PATH_DOCUMENT_SOURCE)
+    words_instances = create_word_instances(files)
     if language_choice == "french":
-        files = get_files_name(PATH_DOCUMENT_SOURCE)
-        words_instances = create_word_instances(files)
-        for instance, file_name in zip(words_instances, files):
-            cells = get_all_cells(instance)
-            create_modified_template(cells, exigence, level)
-            instance.save(PATH_RESULT / file_name)
+        save_file(words_instances, files, exigence, level)
     if language_choice == "english":
-        files = get_files_name(PATH_DOCUMENT_SOURCE)
-        words_instances = create_word_instances(files)
-        for instance, file_name in zip(words_instances, files):
-            cells = get_all_cells(instance)
-            create_modified_template(cells, requirement, level)
-            instance.save(PATH_RESULT / file_name)
+        save_file(words_instances, files, requirement, level)
+        

@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QApplication, QMainWindow, QToolBar, QStatusBar, QPushButton, QMessageBox, QWidget, \
     QVBoxLayout, QListWidget, QAbstractItemView, QGridLayout, QGroupBox, QLineEdit, QLabel, QHBoxLayout, QRadioButton
-from excel_to_word import get_files_name, PATH_DOCUMENT_SOURCE
+from function import get_files_name, PATH_DOCUMENT_SOURCE
 from function import main
 
 
