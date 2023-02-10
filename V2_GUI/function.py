@@ -5,7 +5,7 @@ from colorama import Fore, Style
 from pathlib import Path
 from docx2pdf import convert
 
-from utils  import modified_indentation, convert_to_pdf
+from utils  import modified_indentation
 
 # Définie les noms des dossiers et des fichiers comme des constantes.
 SOURCE_FOLDER = "document_source"
@@ -103,7 +103,7 @@ def save_file(words_instances, files, exigence, level):
             cells = get_all_cells(instance)
             create_modified_template(cells, exigence, level)
             instance.save(PATH_RESULT / file_name)
-            convert_to_pdf(PATH_RESULT, file_name)
+            #convert_to_pdf(PATH_RESULT, file_name)
             
 
 

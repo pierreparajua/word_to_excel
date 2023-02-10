@@ -38,7 +38,7 @@ def modified_indentation(text: str) -> str:
 
     text = ''.join(sentences)
     return text
-
+"""
 def convert_to_pdf (folder_path, docx_file):
         pdf_file = docx_file[:-5] + ".pdf"
-        convert(folder_path / docx_file, folder_path / pdf_file)
+        convert(folder_path / docx_file, folder_path / pdf_file)"""
